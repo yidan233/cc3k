@@ -1,33 +1,66 @@
-# cc3k
-# CC3K - Chambers of the Cursed King
+# ChamberCrawler3000 (CC3K)
 
-## Introduction
-CC3K is a dungeon crawler game where a player starts randomly generated in one of five chambers on a floor, needing to reach the fifth floor alive to win. Each floor is filled with enemies, potions, and gold. Enemies attack within one block radius, potions provide buffs or debuffs when picked up, and gold can be collected for points.
+**ChamberCrawler3000 (CC3K)** is a single-player, ASCII-based, turn-based dungeon crawling game built in C++. You play as a heroic adventurer battling through 5 dangerous dungeon floors, collecting treasure, using mysterious potions, and fighting randomly roaming monsters.
 
-## Game Mechanics
-- **Player Movement**: Navigate through floors, avoiding or engaging enemies, and collecting items.
-- **Combat**: Engage in turn-based combat with enemies within close proximity.
-- **Items**: Collect potions and gold, each affecting the player's stats or score.
-- **Progression**: Move to the next floor by finding the stairs, aiming to reach and survive the fifth floor.
+---
 
-## Class Overview
-- **Item**: Base class for game items with subclasses `Potion` and `Gold`.
-  - **Potion**: Implements Decorator Pattern for dynamic effect application.
-  - **Gold**: Stores gold amounts that players can collect.
-- **Character**: Observer pattern with subclasses `Player` (subject) and `Enemy` (observers).
-- **Cell**: Represents a unit area on the floor storing items or characters.
-- **Chamber**: Manages item spawning within a chamber using a vector of cell pointers.
-- **Floor**: Handles the layout and item distribution across the game floor.
-- **GameFlow**: Acts as the game controller, managing the game state and player actions.
+## 🚀 Features
 
-## Design Patterns
-- **Decorator**: Used in `Potion` for effect management.
-- **Observer**: Applied in `Character` for enemy alerts on player moves.
-- **Inheritance**: Shared functionalities across classes.
-- **RAII**: Resource management using smart pointers to prevent memory leaks.
+- **Turn-based gameplay** with full control over movement and combat  
+- **Character selection** with unique races and abilities (Troll, Vampire, Goblin, etc.)  
+- **Randomly generated enemies**, potions, and gold per floor  
+- **Custom map support** via command-line input  
+- **Color-coded ASCII display** for clear in-terminal visuals  
+- **Combat mechanics** with stat-based damage calculations  
+- **Potion effects** (some helpful, some harmful — all unknown until used)  
+- **Five-floor dungeon** with increasing difficulty  
 
-## Building the Project
-To build CC3K, ensure you have a C++ compiler that supports C++11 or later. Use the following commands:
+---
+
+## 🎮 Gameplay Overview
+
+- `@` – You (the player character)  
+- `G` (yellow) – Gold piles (collect to increase your score)  
+- `P` (green) – Potions (positive or negative effects)  
+- Red letters – Enemies (`O`: Orc, `E`: Elf, `M`: Merchant, `D`: Dragon, etc.)  
+- `/` – Ladder to the next floor (reach it to advance)  
+
+Enemies move **randomly**, but will attack if you’re nearby.  
+You always strike first in combat, and your attacks never miss.  
+The game ends when you die or complete all 5 floors.
+
+---
+
+## 🕹️ Controls
+
+| Command         | Description                              |
+|-----------------|------------------------------------------|
+| `no`, `so`, `ea`, `we`, `ne`, `nw`, `se`, `sw` | Move in the specified direction        |
+| `a<dir>`        | Attack enemy in direction `<dir>`        |
+| `u<dir>`        | Use potion in direction `<dir>`          |
+| `s`, `d`, `v`, `g`, `t` | Choose race: Shade, Drow, Vampire, Goblin, Troll |
+| `f`             | Freeze/unfreeze enemy movement           |
+| `r`             | Restart the game                         |
+| `q`             | Quit the game                            |
+
+---
+
+## 🛠️ How to Build & Run
+
+### Prerequisites
+
+- A C++17-compatible compiler (e.g., `g++`)
+- Unix-like terminal (with ANSI color support)
+
+### Compile
+
 ```bash
-g++ -std=c++11 *.cpp -o cc3k
-./cc3k
+g++ -std=c++17 -o cc3k main.cc [other .cc files]
+```
+
+
+Explore, survive, and reach the bottom of the dungeon.
+Collect as much gold as possible and defeat enemies along the way.
+Each decision matters — fight wisely, use potions carefully, and avoid being surrounded.
+
+Good luck in the chambers of ChamberCrawler3000!
